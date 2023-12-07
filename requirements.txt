@@ -12,7 +12,7 @@ pandas==2.0.3
 numpy
 
 #app
-Flask==2.0.2
+flask==3.0.0
 gunicorn
 Werkzeug==2.2.2
 yfinance
