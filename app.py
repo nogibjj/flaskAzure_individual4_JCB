@@ -1,4 +1,4 @@
-from flask import Flask, send_file, render_template
+from flask import Flask, send_file, render_template, request
 import io
 import base64
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
@@ -47,26 +47,28 @@ def create_plot(data):
     return buf
 
 
-# create a Flask app
+
+
 app = Flask(__name__)
 
-
-# define the root route
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def index():
-    ticker = "MSFT"
-    return render_template("index.html", ticker=ticker)
+    if request.method == "POST":
+        ticker = request.form.get("ticker")
+        data = get_data(ticker)
+        buf = create_plot(data)
+        buf.seek(0)
+        return send_file(buf, mimetype='image/png')
+    return render_template("index.html")
 
-
-# define the route for the plot image
 @app.route("/plot.png")
 def plot_png():
-    # get the ticker from the query parameters
-    ticker = "MSFT"
+    ticker = request.args.get('ticker')
     data = get_data(ticker)
     buf = create_plot(data)
     buf.seek(0)
     return send_file(buf, mimetype='image/png')
+
 
 if __name__ == "__main__":
     app.run(debug=True)
