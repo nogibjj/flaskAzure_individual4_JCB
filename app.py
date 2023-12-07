@@ -50,3 +50,6 @@ def plot_png():
     # embed the plot in the html output
     data = base64.b64encode(buf.read()).decode("ascii")
     return render_template("index.html", ticker=ticker, data=data)
+
+if __name__ == "__main__":
+    app.run(debug=True)
