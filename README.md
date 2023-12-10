@@ -29,9 +29,11 @@ http://stock-plots-app.thankfulstone-b8f54cbf.westus2.azurecontainerapps.io
 ### Example Usage
 
 Following the URL above, the user can input a stock ticker:
+
 ![which_ticker](https://github.com/nogibjj/flaskAzure_individual4_JCB/assets/33461065/c2f925ec-b0cb-4b1b-9798-5cfcac63accf)
 
 Afterwards, the user will click on "Generate Plot" and will be redirected to the plot page:
+
 ![asan_plot](https://github.com/nogibjj/flaskAzure_individual4_JCB/assets/33461065/c81316f4-1123-4b82-912e-f47acb6f7f28)
 
 
